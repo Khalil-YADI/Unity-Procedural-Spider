@@ -34,11 +34,13 @@ To prevent the robot from clipping into slopes or flipping unexpectedly, the mai
     $$\vec{Y}_{new} = \vec{n}$$
 
 2.  **Forward Movement Projection:** The robot's intended movement direction ($\vec{X}_{old}$) is projected onto the new ground plane to ensure velocity is never lost to downward slopes.
-
-    $$\vec{X}_{new} = \frac{\vec{X}_{old} - (\vec{X}_{old} \cdot \vec{Y}_{new})\vec{Y}_{new}}{\|\vec{X}_{old} - (\vec{X}_{old} \cdot \vec{Y}_{new})\vec{Y}_{new}\|}$$
+```math
+\vec{X}_{new} = \frac{\vec{X}_{old} - (\vec{X}_{old} \cdot \vec{Y}_{new})\vec{Y}_{new}}{\|\vec{X}_{old} - (\vec{X}_{old} \cdot \vec{Y}_{new})\vec{Y}_{new}\|}
+```
 
 3.  **Orthogonal Z-Axis Calculation:** Using the right-hand rule, the final axis $\vec{Z}_{new}$ is derived via the cross product of the adjusted X and Y axes.
-
-    $$\vec{Z}_{new} = \frac{\vec{X}_{new} \times \vec{Y}_{new}}{\|\vec{X}_{new} \times \vec{Y}_{new}\|}$$
+```math
+\vec{Z}_{new} = \frac{\vec{X}_{new} \times \vec{Y}_{new}}{\|\vec{X}_{new} \times \vec{Y}_{new}\|}
+```
 
 By feeding $\vec{Z}_{new}$ and $\vec{Y}_{new}$ into a Quaternion LookRotation, we generate a highly stable, mathematically robust orientation frame that smoothly interpolates (via `Lerp`) as the robot traverses uneven terrain.
