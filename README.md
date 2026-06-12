@@ -43,4 +43,4 @@ To prevent the robot from clipping into slopes or flipping unexpectedly, the mai
 \vec{Z}_{new} = \frac{\vec{X}_{new} \times \vec{Y}_{new}}{\|\vec{X}_{new} \times \vec{Y}_{new}\|}
 ```
 
-By feeding $\vec{Z}_{new}$ and $\vec{Y}_{new}$ into a Quaternion LookRotation, we generate a highly stable, mathematically robust orientation frame that smoothly interpolates (via `Lerp`) as the robot traverses uneven terrain.
+By feeding `$\vec{Z}_{new}$` and `$\vec{Y}_{new}$` into a Quaternion LookRotation, we generate a highly stable, mathematically robust orientation frame that smoothly interpolates (via `Lerp`) as the robot traverses uneven terrain.
